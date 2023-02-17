@@ -18,18 +18,4 @@ spec:
           service:
             name: {{ .Release.Name }}
             port:
-              number: 3000
-      # - path: /web2
-      #   pathType: Prefix
-      #   backend:
-      #     service:
-      #       name: web2
-      #       port:
-      #         number: 3000     
-      # - path: /metrics
-      #   pathType: Prefix
-      #   backend:
-      #     service:
-      #       name: web3
-      #       port:
-      #         number: 3000              
+              number: 3000         

@@ -3,3 +3,5 @@ containers:
 
 replicaCount: 2
 
+namespace: ingress-nginx
+
