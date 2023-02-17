@@ -1,0 +1,5 @@
+containers:
+  image: cyberdanus/my_app:latest
+
+replicaCount: 2
+
