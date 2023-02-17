@@ -17,7 +17,7 @@ spec:
         namespace: {{ .Values.namespace }}
     spec:
       containers:
-      - name: {{ .Release.Name }}-app
+      - name: {{ .Release.Name }}
         image: {{ .Values.containers.image }}
         ports:
         - containerPort: 3000
