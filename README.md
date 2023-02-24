@@ -75,39 +75,34 @@ You have to run the script from folder [backend](/backend/).
 
 #### Building Infrastructure step by step
 
-The second way is to build infrastructure step by step. (*Tested on Ubuntu 20*)
+The second way is to build infrastructure step by step. (*Tested on Ubuntu 22*)
 
-<details><summary>Use Google Cloud CLI</summary>
+<details><summary>Use AWS Cloud CLI</summary>
 
-* Go to [Google Cloud Console](https://console.cloud.google.com/) and autorize.
-* [Install the gcloud CLI](https://cloud.google.com/sdk/docs/install#deb)
+* Go to [AWS Cloud Console](https://console.aws.amazon.com/console/home?nc2=h_ct&src=header-signin) and autorize.
+* [Install the AWS cloud CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+* [Install the Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+
 
 ```bash
-# install gcloud CLI for Ubuntu
-sudo apt-get install apt-transport-https ca-certificates gnupg
-echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-sudo apt-get update && sudo apt-get install google-cloud-cli
+# install AWS cloud CLI for Ubuntu
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 
-# Connect to Google CLI
-gcloud init
+# install Terraform CLI for Ubuntu
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+
+# Connect to AWS CLI with existing credentials
+aws configure
 ```
 
-* Create [new Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+# Clone GitHub repository
+git clone https://github.com/cyberdanus/eks_deployment.git
 
-```bash
-# Choose dafault Project
-gcloud auth application-default login
-# Enable the Cloud Storage API:
-gcloud services enable storage.googleapis.com
-
-# Create Bucket to save tfstate-files
-region="us-central1"    # please check in file `tf-code/variables/infr.tfvars`
-bucket="tfstate_files"
-gsutil mb -p taskurban -c REGIONAL -l $region -b on gs://$bucket
-
-# Clone repository urban-test
-git clone git@github.com:Aleh-Mudrak/urban.git
+# Create Remote tfstate S3 Bucket to save tfstate-files
+You have to run the terraform cli from folder [backend](/backend/).  
+terraform apply -auto-approve
 ```
 
 </details>
