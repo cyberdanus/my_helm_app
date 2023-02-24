@@ -104,10 +104,23 @@ git clone https://github.com/cyberdanus/eks_deployment.git
 You have to run the terraform cli from folder [backend](/backend/).  
 ```
 # Go to folder `backend` and run commands:
+terraform init
 terraform apply -auto-approve
 
 
-```bash
+```
+# Create infrastructure with Terraform
+You have to run the terraform cli from folder [eks_dep](/eks_dep/).  
+```
+# Go to folder `eks_dep` and run commands:
+terraform init
+terraform apply -auto-approve
+
+
+```
+
+
+bash
 # Go to folder `tf-code/infrustructure` and run commands:
 cd tf-code/infrustructure
 terraform init
