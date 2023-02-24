@@ -9,7 +9,7 @@ This repo contains a [Terraform](https://www.terraform.io) code for running a Ku
 - [Urban Task](#urban-task)
 - [Table of contents](#table-of-contents)
 - [Quickstart](#quickstart)
-  - [Building Infrastructure in AWS](#building-infrastructure-in-gcp)
+  - [Building Infrastructure in AWS](#building-infrastructure-in-aws)
     - [Building Infrastructure by pipeline](#building-infrastructure-by-pipeline)
     - [Building Infrastructure step by step](#building-infrastructure-step-by-step)
   - [Terraform code](#terraform-code)
