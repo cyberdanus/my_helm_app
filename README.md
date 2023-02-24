@@ -48,7 +48,7 @@ Please review the `Requirements` before starting.
 
 **Terraform and Plugins**
 - [Terraform](https://www.terraform.io/downloads.html)    >= 1.3.x
-- [Terraform Provider for AWS][terraform-provider-aws](https://registry.terraform.io/providers/hashicorp/aws/latest) >= 4.55.x
+- [Terraform Provider for AWS] [terraform-provider-aws](https://registry.terraform.io/providers/hashicorp/aws/latest) >= 4.55.x
 
 </details></br>
 
@@ -102,8 +102,8 @@ git clone https://github.com/cyberdanus/eks_deployment.git
 
 # Create Remote tfstate S3 Bucket to save tfstate-files
 You have to run the terraform cli from folder [backend](/backend/).  
-terraform apply -auto-approve
 ```
+terraform apply -auto-approve
 
 </details>
 
