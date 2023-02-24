@@ -48,7 +48,7 @@ Please review the `Requirements` before starting.
 
 **Terraform and Plugins**
 - [Terraform](https://www.terraform.io/downloads.html)    >= 1.3.x
-- [Terraform Provider for GCP][terraform-provider-aws] >= 4.55.x
+- [Terraform Provider for AWS][terraform-provider-aws] >= 4.55.x
 
 </details></br>
 
