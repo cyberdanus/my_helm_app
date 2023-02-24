@@ -41,17 +41,7 @@ Please review the `Requirements` before starting.
 
 **Amazon Cloud Account**
 - You have to loginin your Amazon Cloud Account
-- Create new Project
 - [Add billing on this Project](https://aws.amazon.com/premiumsupport/knowledge-center/tags-billing-cost-center-project/)
-
-**CLI `AWS`**
-- Some submodules use the [terraform-google-gcloud](https://github.com/terraform-google-modules/terraform-google-gcloud) module. By default, this module assumes you already have gcloud installed in your $PATH.  
-- See the [module](https://github.com/terraform-google-modules/terraform-google-gcloud#downloading) documentation for more information.
-
-**Enable APIs**  
-- In order to operate with the Service Account you must activate the following [APIs on the project](https://console.cloud.google.com/flows/enableapi?apiid=artifactregistry.googleapis.com,container.googleapis.com&_ga=2.89666075.1490439926.1658674592-2107436295.1657877440) where the Service Account was created:
-  - Compute Engine API - compute.googleapis.com
-  - Kubernetes Engine API - container.googleapis.com
 
 **Software Dependencies**
 - [kubectl](https://github.com/kubernetes/kubernetes/releases) >= 1.26.x
@@ -64,33 +54,21 @@ Please review the `Requirements` before starting.
 
 ### Building Infrastructure in AWS
 
-AWS Cloud Account and New Project
+AWS Cloud Account
   * You have to login in your [AWS Cloud Account](https://console.aws.amazon.com/console/home?nc2=h_ct&src=header-signin)
   * [Add billing on this Project](https://aws.amazon.com/premiumsupport/knowledge-center/tags-billing-cost-center-project)
 
 #### Building Infrastructure by pipeline
 
-We can use the script `start.sh`  to create AWS S3 remote state  Infrustructure.  
-You have to run the script from folder [scripts](/scripts/).  
-(*it takes about 25-30 minutes*). 
+We can use the script `start.sh` from backend dir to create AWS S3 Terraform remote state backend for Infrustructure.  
+You have to run the script from folder [backend](/backend/).  
 
-  * Before start you have to connect to gcloud CLI in terminal:
-    * `gcloud init` - connect to your Google Account
-    * `gcloud auth application-default login` - Choose your Google Project
-  * Install the *gke-gcloud-auth-plugin binary*
-    * `sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin` # (*Ubuntu solution*)
+  * Before start you have to connect to AWS cloud CLI in terminal:
+    * `aws configure` - connect to your AWS Account with existing credentials
   * Clone repository
-    * `git clone git@github.com:Aleh-Mudrak/urban.git`
-  * You can change initial parameters. They will be used in the script.
-    * [tf-code/variables/infr.tfvars](tf-code/variables/infr.tfvars) - Cluster Terraform variables include `project_id` and `region`
-    * [tf-code/infrustructure/main.tf](tf-code/infrustructure/main.tf) - `bucket` name and `prefix`
-    * [tf-code/variables/deploy.tfvars](tf-code/variables/deploy.tfvars) - Deploy to Cluster: Namespaces, Ingress and Prometheus
-    * [tf-code/deploy/main.tf](tf-code/deploy/main.tf) - Deploy `prefix`
-  * Start script [start.sh](scripts/start.sh) from folder [scripts](/scripts/)
-    * `cd scripts`
-    * `./start.sh`
-  * Add GitHub Secrets to your Repository
-    * When `start.sh` script finished work you can see secrets in terminal
+    * `git clone https://github.com/cyberdanus/eks_deployment.git`
+  * Add GitHub Secrets to Action in your Repository
+    * The necessary secrets are AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY. Also we can use TELEGRAM_TO and TELEGRAM_TOKEN secrets for ChatOPS
     * You have to [add this secrets](#how-use-github-actions-to-deploy-application) in your GitHub Repository
 
 </br>
