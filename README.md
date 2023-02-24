@@ -102,7 +102,7 @@ git clone https://github.com/cyberdanus/eks_deployment.git
 
 # Create Remote tfstate S3 Bucket to save tfstate-files
 You have to run the terraform cli from folder [backend](/backend/).  
-```
+```bash
 # Go to folder `backend` and run commands:
 terraform init
 terraform apply -auto-approve
@@ -111,7 +111,7 @@ terraform apply -auto-approve
 ```
 # Create infrastructure with Terraform
 You have to run the terraform cli from folder [eks_dep](/eks_dep/).  
-```
+```bash
 # Go to folder `eks_dep` and run commands:
 terraform init
 terraform apply -auto-approve
