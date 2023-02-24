@@ -103,14 +103,9 @@ git clone https://github.com/cyberdanus/eks_deployment.git
 # Create Remote tfstate S3 Bucket to save tfstate-files
 You have to run the terraform cli from folder [backend](/backend/).  
 ```
+# Go to folder `backend` and run commands:
 terraform apply -auto-approve
 
-</details>
-
-
-<details><summary>Use Terraform code</summary>
-
-Variables to create Cloud Infrastructure in file [tf-code/variables/infr.tfvars](tf-code/variables/infr.tfvars)
 
 ```bash
 # Go to folder `tf-code/infrustructure` and run commands:
