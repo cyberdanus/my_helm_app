@@ -177,7 +177,7 @@ Terraform code in folders:
 
 ### How use GitHub Actions to deploy application
 
-When infrustructure ready you can use [GitHub Actions](https://github.com/Aleh-Mudrak/actions/workflows/build-push.yml) to deploy application in Kubernetes Cluster.
+When infrustructure ready you can use [GitHub Actions](https://github.com/cyberdanus/eks_deployment/blob/main/.github/workflows/main.yml) with workflow dispatch to deploy and destroy Kubernetes Cluster with ArgoCD wich inplements GitOPS strategy of application deployment.
 
 </br>
 
@@ -185,11 +185,14 @@ When infrustructure ready you can use [GitHub Actions](https://github.com/Aleh-M
 
 GitHub Secrets link like this: `https://github.com/<Your-Account-Name>/<Your-Repository>/settings/secrets/actions`
 
-  * **GCP_SA_KEY** - Service Account Key to connect in Cluster
-  * **GKE_PROJECT** - Your `project_id` in Google Cloud
-  * **GKE_CLUSTER** - Cluster Name
-  * **GKE_ZONE** - Region of your Cluster
-  * **SLACK_WEBHOOK_URL**` - [Webhook URL](https://api.slack.com/apps/A02MHFFJK26/incoming-webhooks?) to connect in [Slack API](https://api.slack.com) and send messages
+  * **AWS_ACCESS_KEY_ID** - Service Account Key to connect in Cluster
+  * **AWS_SECRET_ACCESS_KEY** - Your `project_id` in Google Cloud
+  * **TELEGRAM_TO** - Cluster Name
+  * **TELEGRAM_TOKEN** - Region of your Cluster
+  * **SLACK_WEBHOOK**` - [Webhook URL](https://api.slack.com/apps/A02MHFFJK26/incoming-webhooks?) to connect in [Slack API](https://api.slack.com) and send messages
+  * **SLACK_BOT_TOKEN** - Region of your Cluster   
+  * **DOCKERHUB_TOKEN** - Region of your Cluster
+  * **DOCKERHUB_USERNAME** - Region of your Cluster
 
 <details><summary>Screenshots and Commands to get GitHub Repository Secrtets</summary>
 
