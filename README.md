@@ -119,38 +119,15 @@ terraform apply -auto-approve
 
 ```
 
-
-bash
-# Go to folder `tf-code/infrustructure` and run commands:
-cd tf-code/infrustructure
-terraform init
-terraform apply -var-file ../variables/infr.tfvars -auto-approve
-```
-
-After that you have to Deploy Ingress and Prometheus. Parameters in file [tf-code/variables/deploy.tfvars](tf-code/variables/deploy.tfvars)
-
-```bash
-# Go to folder `tf-code/deploy` and run commands:
-cd ../deploy
-terraform init
-terraform apply -var-file ../variables/deploy.tfvars -auto-approve
-```
-
 </details>
 
-<details><summary>Connect to Urban-Cluster</summary>
+<details><summary>Connect to EKS Cluster</summary>
 
-Then you have to Connect to Cluster
+Then you have to Connect to EKS Cluster
 
 ```bash
-# Install the gke-gcloud-auth-plugin binary
-sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin
-
-# Update the kubectl configuration to use the plugin:
-cd ../infrustructure
-CLUSTER_NAME=$(terraform output -raw cluster_name)
-cluster_location=$(terraform output -raw cluster_location)
-gcloud container clusters get-credentials $CLUSTER_NAME --region $cluster_location
+# Update the kubectl configuration:
+aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
 
 # test connetion
 kubectl get nodes
