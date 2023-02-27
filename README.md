@@ -118,6 +118,7 @@ terraform apply -auto-approve
 
 
 ```
+</details>
 
 <details><summary>Connect to EKS Cluster</summary>
 
