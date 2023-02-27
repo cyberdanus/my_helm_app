@@ -138,40 +138,17 @@ kubectl get nodes
 
 ### Terraform code
 
-Terraform code in folders:
-* `tf-code/infrustructure` - create infrustructure: Google Kubernetes Engine (GKE) Cluster, Network with Firewall and rules, Google Container Regygistry (GCR), and Service Account
-* `tf-code/infrustructure` - Create Kubernetes Namespaces: test, dev, prod. Deploy Nginx Ingress and Prometheus with Grafana by helm deploy.
-* `tf-code/modules/service-account` - by this Module create Service Account 
-
 <details><summary>Infrustructure</summary>
+Any manifests are based at [eks_dep](/eks_dep/) directory.
 
-* **container-registry.tf** - GCR to store docker images
-* **k8s-cluster.tf** - GKE CLuster
-* **main.tf** - TF requerments: backend, requiered providers and providers (google, kubernetes, helm), Datasources
-* **network.tf** - VPC, Subnet, Router, NAT, Firewall
+
+* **eks-cluster.tf** - EKS Kubernetes (K8s) CLuster
+* **main.tf** - TF requerments: backend, requiered providers and providers, Datasources
+* **vpc.tf** - VPC, Subnet, Router, NAT, Firewall
 * **outputs.tf** - Output data
-* **service-account.tf** - Service account to create GKE Cluster and Deploy by GitHub Action. Used module [modules/service-account](tf-code/modules/service-account) to create Service Account and add Roles. [Module documentation](tf-code/modules/service-account/README.md)
-* **variables.tf** - Used variables. Set variables in file like [infr.tfvars](tf-code/variables/infr.tfvars)
+* **variables.tf** - Used variables
 
-</details>
-
-<details><summary>Deploy</summary>
-
-* **ingress.tf** - Ingress controller deploy in Namespace `ingress`
-* **main.tf** - TF requerments: backend, requiered providers and providers (google, kubernetes, helm), Datasources
-* **namaspaces.tf** - Create Namespaces in Cluster: `test`, `dev`, `prod`
-* **prometheus.tf** - Prometheus deploy in Namespace `metrics`
-* **variables.tf** - Used variables. Set variables in file like [deploy.tfvars](tf-code/variables/deploy.tfvars)
-
-</details>
-
-<details><summary>Module service-account</summary>
-
-* **main.tf** - Create Service Account and Add Roles, Create SA-KEY
-* **outputs.tf** - Output data
-* **variables.tf** - Used variables. Set variables in file like [infr.tfvars](tf-code/variables/infr.tfvars)
-
-</details></br>
+</br>
 
 
 
@@ -185,14 +162,14 @@ When infrustructure ready you can use [GitHub Actions](https://github.com/cyberd
 
 GitHub Secrets link like this: `https://github.com/<Your-Account-Name>/<Your-Repository>/settings/secrets/actions`
 
-  * **AWS_ACCESS_KEY_ID** - Service Account Key to connect in Cluster
-  * **AWS_SECRET_ACCESS_KEY** - Your `project_id` in Google Cloud
-  * **TELEGRAM_TO** - Cluster Name
-  * **TELEGRAM_TOKEN** - Region of your Cluster
-  * **SLACK_WEBHOOK**` - [Webhook URL](https://api.slack.com/apps/A02MHFFJK26/incoming-webhooks?) to connect in [Slack API](https://api.slack.com) and send messages
-  * **SLACK_BOT_TOKEN** - Region of your Cluster   
-  * **DOCKERHUB_TOKEN** - Region of your Cluster
-  * **DOCKERHUB_USERNAME** - Region of your Cluster
+  * **AWS_ACCESS_KEY_ID** - Service Access Key to connect in Cluster
+  * **AWS_SECRET_ACCESS_KEY** - Secret Access Key to connect in Cluster
+  * **TELEGRAM_TO** - Telegram channel id for sending a messages
+  * **TELEGRAM_TOKEN** - Telegram API access token
+  * **SLACK_WEBHOOK**` - [Webhook URL](https://api.slack.com/apps/*******/incoming-webhooks?) to connect in [Slack API](https://api.slack.com) and send messages
+  * **SLACK_BOT_TOKEN** - Slack channel id token for sending a messages
+  * **DOCKERHUB_TOKEN** - Docker token for access to DockerHub
+  * **DOCKERHUB_USERNAME** - DockerHub Username
 
 <details><summary>Screenshots and Commands to get GitHub Repository Secrtets</summary>
 
