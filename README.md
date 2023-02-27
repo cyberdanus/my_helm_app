@@ -98,8 +98,9 @@ aws configure
 ```
 
 # Clone GitHub repository
+```bash  
 git clone https://github.com/cyberdanus/eks_deployment.git
-
+```
 # Create Remote tfstate S3 Bucket to save tfstate-files
 You have to run the terraform cli from folder [backend](/backend/).  
 ```bash
