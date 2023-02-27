@@ -207,39 +207,33 @@ You have to go in [GitHub Actions page](https://github.com/cyberdanus/eks_deploy
 * **Setup KubeCTL** - After that you recieve message in Slack about Start deploy and initial parameters on step  
 * **Install AWS CLI** - Setup gcloud CLI and Configure Docker to use the gcloud command-line tool as a credential
 * **Configure AWS Credentials** - Get the GKE credentials so we can deploy to the cluster
-* **Terraform fmt** - Configure Setting Environment Variables to Build, Push, and Deploy the application
+* **Terraform Fmt** - Configure Setting Environment Variables to Build, Push, and Deploy the application
 * **Terraform Init** - Build the application 
 * **Terraform Validate** - Push to GCR this application Docker image.  
 * **Terraform Plan** - Deploy in Cluster this application.
-* **Terraform apply force** - Last step send message to Slack with deploy results and link.
-* **Terraform destroy force** - Deploy in Cluster this application.
+* **Terraform Apply Force** - Last step send message to Slack with deploy results and link.
+* **Terraform Destroy Force** - Deploy in Cluster this application.
 * **Deploy to Terraform** - Deploy in Cluster this application.
-* **Deploy to ArgoCD ** - Deploy in Cluster this application.
-* **Send telegram message on push** - Deploy in Cluster this application.
+* **Deploy to ArgoCD** - Deploy in Cluster this application.
+* **Send Telegram message on push** - Deploy in Cluster this application.
 
 </br>
 
 #### Docker image name
 Docker image has image name: 
-* `gcr.io/$PROJECT_ID/$APP_NAME:$PROJECT_VERSION`
-
-Where 
-* **PROJECT_ID** - Google Cloud ProgectID
-* **APP_NAME** - Application Name
-* **PROJECT_VERSION** - Created from `branch_name-commit_hash`:
-  * **branch_name** - Get from started GHActions brunch
-  * **commit_hash** - Short Commit Hash
+* `https://hub.docker.com/r/cyberdanus/my_app:latest`
 
 </details></br>
 
 ### **Deploy configuration**
 
-Deploy configuration files you can find in folder [application/deploy-app/](application/deploy-app/)
+Deploy use ArgoCD for continuous deployment, all configuration files you can find in folder [argo_cd](/argo_cd/)
 
-* `deploy.yml` - Deploy the application
-* `ingress.yml` - Ingress service to connect the application from the Internet
-* `promMetrics.yml` - Deploy a service-monitor to get metrics from the application
-* `service.yml` - Service to connect the applicastion pods
+* `ingress-nginx.yaml` - Deploy NGINX ingress controller from HELM chart
+* `prom.yaml` - Deploy Kube-Prometheus Operator from HELM chart
+* `prodenv.yaml` - Deploy a Production environment of the application
+* `testenv.yaml` - Deploy a Test environment of the application
+* `stageenv.yaml` - Deploy a Stage environment of the application
 
 
 </br><details><summary>Deploy results</summary>
