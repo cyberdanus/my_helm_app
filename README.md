@@ -203,19 +203,19 @@ You have to go in [GitHub Actions page](https://github.com/cyberdanus/eks_deploy
 
 #### Workflow Steps
 * **Checkout** - Clone GitHub repository
-* **Setup Terraform** - Check entered data on this step  
-* **Setup KubeCTL** - After that you recieve message in Slack about Start deploy and initial parameters on step  
-* **Install AWS CLI** - Setup gcloud CLI and Configure Docker to use the gcloud command-line tool as a credential
-* **Configure AWS Credentials** - Get the GKE credentials so we can deploy to the cluster
-* **Terraform Fmt** - Configure Setting Environment Variables to Build, Push, and Deploy the application
-* **Terraform Init** - Build the application 
-* **Terraform Validate** - Push to GCR this application Docker image.  
-* **Terraform Plan** - Deploy in Cluster this application.
-* **Terraform Apply Force** - Last step send message to Slack with deploy results and link.
-* **Terraform Destroy Force** - Deploy in Cluster this application.
-* **Deploy to Terraform** - Deploy in Cluster this application.
-* **Deploy to ArgoCD** - Deploy in Cluster this application.
-* **Send Telegram message on push** - Deploy in Cluster this application.
+* **Setup Terraform** - Setup terraform CLI utility
+* **Setup KubeCTL** - Setup kubectl CLI utility  
+* **Install AWS CLI** - Setup aws CLI utility 
+* **Configure AWS Credentials** - Configure the AWS credentials so we can deploy to the cluster
+* **Terraform Fmt** - Rewrite Terraform configuration files to a canonical format and style
+* **Terraform Init** - Terraform's command for initialize the working directory.
+* **Terraform Validate** - Validate Terraform configuration files in a directory.  
+* **Terraform Plan** -  Creates Terraform execution plan, for preview the changes that plans to make to your infrastructure
+* **Terraform Apply Force** - Force execute for apply the actions proposed in a Terraform plan.
+* **Terraform Destroy Force** - Force execute for destroy the actions proposed in a Terraform plan.
+* **Deploy to Terraform** - Deploy pre init applications to EKS Cluster.
+* **Deploy to ArgoCD** - Deploy in Cluster any stages of application.
+* **Send Telegram message on push** - ChatOPS implementation.
 
 </br>
 
