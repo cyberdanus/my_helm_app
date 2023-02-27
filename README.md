@@ -148,7 +148,7 @@ Any manifests are based at [eks_dep](/eks_dep/) directory.
 * **outputs.tf** - Output data
 * **variables.tf** - Used variables
 
-</br>
+
 
 
 
