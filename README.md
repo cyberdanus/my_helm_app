@@ -197,7 +197,7 @@ terraform output
 
 You have to go in [GitHub Actions page](https://github.com/cyberdanus/eks_deployment/blob/main/.github/workflows/main.yml) and run `Install` like on picture bellow.
 
-![Build and Deploy to GKE](documentation/pics/gha.png)
+![Build and Deploy to EKS](documentation/pics/gha.png)
 
 </br>
 
@@ -249,16 +249,10 @@ Deploy use ArgoCD for continuous deployment, all configuration files you can fin
 
 <details><summary>Show the application the Internet</summary>
 
-Add in your hosts file string like that: `34.69.160.165 taskurban.com`  
-Command to change in the Linux: `sudo vim /etc/hosts`
+In this task i use dynamic name witch assigned to ingress comtroller. In future if domain was enable to assign we able to use Route53 for dynamic name assigning to the project.
 
 
-Where 
-* `34.69.160.165` - IP address from Slack message;
-* `taskurban.com` - URL from Slack message.
-
-
-![Slack message](documentation/pics/Slack_Output.png)
+![Telegram message](documentation/pics/Telegram_Output.png)
 
 </details></br>
 
@@ -315,9 +309,10 @@ app.use(
 
 ## Destroy infrustructure
 
-To destroy infrastructure you can use the script [destroy.sh](scripts/destroy.sh) in folder `scripts`.  
-You have to run the script from folder `scripts/`.  
+You have to go in [GitHub Actions page](https://github.com/cyberdanus/eks_deployment/blob/main/.github/workflows/main.yml) and run `Destroy` like on picture bellow.
 (*it takes about 15-20 minutes*)
+![Destroy EKS](documentation/pics/gha_destroy.png)
+
 
 
 
