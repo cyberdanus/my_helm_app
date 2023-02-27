@@ -133,7 +133,7 @@ aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terr
 kubectl get nodes
 ```
 
-</details></br>
+</details>
 
 
 ### Terraform code
