@@ -149,7 +149,7 @@ Any manifests are based at [eks_dep](/eks_dep/) directory.
 
 
 
-
+</details>
 
 ### How use GitHub Actions to deploy application
 
@@ -174,9 +174,12 @@ GitHub Secrets link like this: `https://github.com/<Your-Account-Name>/<Your-Rep
 
 </br>
 
-* You can Get Secrets by the script [output.sh](scripts/output.sh). You have to run the script from folder `scripts\`.
+* You can Get Secrets by  command.
+```bash
+terraform output
+```
 
-* Example of output from script:
+* Example of output:
 
 ![start_output](documentation/pics/start_output.png)
 
@@ -192,26 +195,27 @@ GitHub Secrets link like this: `https://github.com/<Your-Account-Name>/<Your-Rep
 
 <details><summary>Deploy App</summary>
 
-You have to go in [GitHub Actions page](https://github.com/Aleh-Mudrak/urban/actions/workflows/build-push.yml) and run `Build and Deploy to GKE` like on picture bellow.
+You have to go in [GitHub Actions page](https://github.com/cyberdanus/eks_deployment/blob/main/.github/workflows/main.yml) and run `Install` like on picture bellow.
 
 ![Build and Deploy to GKE](documentation/pics/gha.png)
-
-* Choose `Environment` (test|dev|prod)
-* And `Replicas` of the application (1-5)
 
 </br>
 
 #### Workflow Steps
 * **Checkout** - Clone GitHub repository
-* **Check_input_Variables** - Check entered data on this step  
-* **Slack_Notification_Start** - After that you recieve message in Slack about Start deploy and initial parameters on step  
-* **Setup_gcloud** - Setup gcloud CLI and Configure Docker to use the gcloud command-line tool as a credential
-* **get_gke_credentials** - Get the GKE credentials so we can deploy to the cluster
-* **Setting_Environment_Variables** - Configure Setting Environment Variables to Build, Push, and Deploy the application
-* **Build** - Build the application 
-* **Publish** - Push to GCR this application Docker image.  
-* **Deploy** - Deploy in Cluster this application.
-* **Slack_Notification_Finish** - Last step send message to Slack with deploy results and link.
+* **Setup Terraform** - Check entered data on this step  
+* **Setup KubeCTL** - After that you recieve message in Slack about Start deploy and initial parameters on step  
+* **Install AWS CLI** - Setup gcloud CLI and Configure Docker to use the gcloud command-line tool as a credential
+* **Configure AWS Credentials** - Get the GKE credentials so we can deploy to the cluster
+* **Terraform fmt** - Configure Setting Environment Variables to Build, Push, and Deploy the application
+* **Terraform Init** - Build the application 
+* **Terraform Validate** - Push to GCR this application Docker image.  
+* **Terraform Plan** - Deploy in Cluster this application.
+* **Terraform apply force** - Last step send message to Slack with deploy results and link.
+* **Terraform destroy force** - Deploy in Cluster this application.
+* **Deploy to Terraform** - Deploy in Cluster this application.
+* **Deploy to ArgoCD ** - Deploy in Cluster this application.
+* **Send telegram message on push** - Deploy in Cluster this application.
 
 </br>
 
